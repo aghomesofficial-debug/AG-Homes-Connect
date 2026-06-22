@@ -80,14 +80,20 @@ cursor:pointer;
 <input type="text" placeholder="Budget">
 
 <button onclick="saveLead()">Save Lead</button>
-
+<h3>Saved Lead: <span id="savedLead">None</span></h3>
 </div>
 
 </div>
-<script>
+window.onload = function(){
+let saved = localStorage.getItem("leadName");
+
+if(saved){
+document.getElementById("savedLead").innerText = saved;
+}
+}<script>
 function saveLead(){
 let name = document.getElementById("name").value;
-
+document.getElementById("savedLead").innerText = name;
 localStorage.setItem("leadName", name);
 
 alert("Lead Saved Successfully!");
